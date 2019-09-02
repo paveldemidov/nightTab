@@ -30,9 +30,8 @@ const filename = {
   js: 'nighttab.min.js'
 }
 
-const jsDependencies = [
-  path.nodeModules + '/html5sortable/dist/html5sortable.min.js',
-  path.nodeModules + '/invert-color/lib/invert.min.js'
+const cssDependencies = [
+  path.nodeModules + '/@fortawesome/fontawesome-free/css/all.min.css'
 ]
 
 const cssFiles = [
@@ -62,8 +61,12 @@ const cssFiles = [
   path.src + '/css/search.css',
   path.src + '/css/background.css',
   path.src + '/css/link.css',
-  path.src + '/css/auto-suggest.css',
-  path.src + '/css/fontawesome.css'
+  path.src + '/css/auto-suggest.css'
+]
+
+const jsDependencies = [
+  path.nodeModules + '/html5sortable/dist/html5sortable.min.js',
+  path.nodeModules + '/invert-color/lib/invert.min.js'
 ]
 
 const jsFiles = [
