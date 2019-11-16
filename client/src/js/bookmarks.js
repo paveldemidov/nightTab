@@ -323,9 +323,9 @@ var bookmarks = (function() {
   };
 
   var init = async function() {
-    data = await data.load();
-    if (data) {
-      mod.restore(data);
+    var loadedData = await data.load();
+    if (loadedData) {
+      mod.restore(loadedData);
     };
   };
 

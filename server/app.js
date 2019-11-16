@@ -9,7 +9,11 @@ app.set('trust proxy', true)
 
 app.use(logger('dev'));
 
-app.use(express.static(path.join(__dirname, '..', 'client', 'build', 'web')))
+app.use(express.static(path.join(__dirname, '..', 'client', 'build', 'web')));
+
+if (!fs.existsSync(`${__dirname}/storage`)) {
+  fs.mkdirSync(`${__dirname}/storage`);
+}
 
 app.post('/rest/storage/:key', function (req, res) {
     var file = fs.createWriteStream(`${__dirname}/storage/${req.params.key}`);
