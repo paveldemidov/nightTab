@@ -82,8 +82,8 @@ var data = (function() {
     return await response.text();
   };
 
-  mod.remove = function(key) {
-    fetch(`/rest/storage/${key}`, {
+  mod.remove = async function(key) {
+    await fetch(`/rest/storage/${key}`, {
       method: 'DELETE'
     });
   };
@@ -124,8 +124,8 @@ var data = (function() {
     modal.open({
       heading: "Clear all nightTab data?",
       content: clearContent,
-      successAction: function() {
-        wipe();
+      successAction: async function() {
+        await wipe();
         render.reload();
         shade.close();
         pagelock.unlock();
@@ -256,8 +256,8 @@ var data = (function() {
     return _data ? JSON.parse(_data) : undefined;
   };
 
-  var wipe = function() {
-    mod.remove(_saveName);
+  var wipe = async function() {
+    await mod.remove(_saveName);
     render.reload();
   };
 

@@ -116,9 +116,9 @@ var modal = (function() {
           this.parentElement.removeChild(this);
         };
       }.bind(modal), false);
-      actionButton.addEventListener("click", function(event) {
+      actionButton.addEventListener("click", async function(event) {
         if (options.successAction) {
-          options.successAction();
+          await options.successAction();
         };
         this.close();
       }.bind(modal), false);

@@ -31,7 +31,7 @@ app.get('/rest/storage/:key', function (req, res) {
     });
   });
 app.delete('/rest/storage/:key', function (req, res) {
-    fs.unlink(`${__dirname}/storage/${req.params.key}`);
+    fs.unlink(`${__dirname}/storage/${req.params.key}`, (err) => {});
     res.end();
 });
 
