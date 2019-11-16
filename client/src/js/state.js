@@ -256,8 +256,9 @@ var state = (function() {
   };
 
   var init = async function() {
-    if (await data.load()) {
-      mod.restore(await data.load());
+    var loadedData = await data.load();
+    if (loadedData) {
+      mod.restore(loadedData);
     };
   };
 

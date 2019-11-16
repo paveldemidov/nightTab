@@ -6,10 +6,11 @@ var path = require('path');
 var app = express();
 
 app.set('trust proxy', true)
-
 app.use(logger('dev'));
-
-app.use(express.static(path.join(__dirname, '..', 'client', 'build', 'web')));
+app.use(express.static(path.join(__dirname, '..', 'client', 'build', 'web'), {
+  cacheControl: true,
+  maxAge: 604800
+}));
 
 if (!fs.existsSync(`${__dirname}/storage`)) {
   fs.mkdirSync(`${__dirname}/storage`);

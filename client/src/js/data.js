@@ -4,6 +4,8 @@ var data = (function() {
 
   var mod = {};
 
+  var _data = null;
+
   mod.import = function() {
     var fileList = helper.e(".control-data-import").files;
     if (fileList.length > 0) {
@@ -59,7 +61,6 @@ var data = (function() {
         mod.set(_saveName, JSON.stringify(data));
       } else {
         console.log("data version " + version.get().number + " no need to run update");
-        mod.set(_saveName, JSON.stringify(data));
       };
     } else {
       console.log("no data found to load");
@@ -249,8 +250,10 @@ var data = (function() {
   };
 
   var load = async function() {
-    var data = await mod.get(_saveName);
-    return data ? JSON.parse(data) : undefined;
+    if (!_data) {
+      _data = await mod.get(_saveName);
+    }
+    return _data ? JSON.parse(_data) : undefined;
   };
 
   var wipe = function() {
