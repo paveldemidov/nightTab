@@ -67,15 +67,24 @@ var data = (function() {
   };
 
   mod.set = function(key, data) {
-    localStorage.setItem(key, data);
+    fetch(`/rest/storage/${key}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: data
+    });
   };
 
-  mod.get = function(key) {
-    return localStorage.getItem(key);
+  mod.get = async function(key) {
+    var response = await fetch(`/rest/storage/${key}`);
+    return await response.text();
   };
 
   mod.remove = function(key) {
-    localStorage.removeItem(key);
+    fetch(`/rest/storage/${key}`, {
+      method: 'DELETE'
+    });
   };
 
   var bind = {};
@@ -239,8 +248,9 @@ var data = (function() {
     }));
   };
 
-  var load = function() {
-    return JSON.parse(mod.get(_saveName));
+  var load = async function() {
+    var data = await mod.get(_saveName);
+    return data ? JSON.parse(data) : undefined;
   };
 
   var wipe = function() {
@@ -248,8 +258,8 @@ var data = (function() {
     render.reload();
   };
 
-  var init = function() {
-    mod.restore(data.load());
+  var init = async function() {
+    mod.restore(await data.load());
     render.feedback.empty();
   };
 

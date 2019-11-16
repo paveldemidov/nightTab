@@ -1,0 +1,57 @@
+{
+  "name": "nighttab",
+  "version": "4.0.0",
+  "description": "A neutral new tab page accented with a chosen colour. Customise the layout, style, background and bookmarks in nightTab.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run clean-dev; gulp dev",
+    "build": "npm run clean-build; npm run build-web; npm run build-extension",
+    "build-web": "gulp build",
+    "build-extension": "web-ext build -s build/web -a build/extension",
+    "lint": "npm run lint-extension",
+    "lint-extension": "web-ext lint -s build/web",
+    "clean": "npm run clean-dev; npm run clean-build",
+    "clean-dev": "rm -rf dev",
+    "clean-build": "rm -rf build",
+    "deploy-gh-pages": "npm run clean-build; gulp build; gh-pages -d build/web",
+    "start": "npm run build-web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zombieFox/nightTab.git"
+  },
+  "keywords": [
+    "startpage",
+    "start-page",
+    "newtabpage",
+    "new-tab-page",
+    "tab",
+    "chrome-extension",
+    "extension",
+    "bookmarks",
+    "links"
+  ],
+  "author": "zombieFox",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/zombieFox/nightTab/issues"
+  },
+  "homepage": "https://github.com/zombieFox/nightTab#readme",
+  "devDependencies": {
+    "gh-pages": "^2.1.1",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.1",
+    "gulp-filter": "^6.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-replace": "^1.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1",
+    "html5sortable": "^0.9.17",
+    "invert-color": "^2.0.0",
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
+    "web-ext": "^3.2.1"
+  }
+}

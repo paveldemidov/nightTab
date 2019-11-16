@@ -255,9 +255,9 @@ var state = (function() {
     };
   };
 
-  var init = function() {
-    if (data.load()) {
-      mod.restore(data.load());
+  var init = async function() {
+    if (await data.load()) {
+      mod.restore(await data.load());
     };
   };
 

@@ -322,9 +322,10 @@ var bookmarks = (function() {
     }
   };
 
-  var init = function() {
-    if (data.load()) {
-      mod.restore(data.load());
+  var init = async function() {
+    data = await data.load();
+    if (data) {
+      mod.restore(data);
     };
   };
 
